@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ title }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,28 +31,24 @@
 </template>
 
 <script>
+import { reactive, toRefs, onBeforeMount, onMounted } from 'vue'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'app',
+  setup() {
+    console.log('1-开始创建组件-setup')
+    const data = reactive({
+      title: 'hello Vite'
+    })
+    onBeforeMount(() => {
+      console.log('2.组件挂载页面之前执行----onBeforeMount')
+    })
+    onMounted(() => {
+      console.log('3.-组件挂载到页面之后执行-------onMounted')
+    })
+    return {
+      ...toRefs(data),
+    }
+  },
 }
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+</script>

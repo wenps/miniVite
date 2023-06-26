@@ -47,7 +47,7 @@ app.use(async ctx => {
 
        const p = path.join(__dirname, url.split('?')[0]) // 由于import { render as __render } from '${url}?type=template' 链接上可能带参数，所以要解析出来
        const ret = compilerSFC.parse(fs.readFileSync(p ,'utf-8')) // 解析获得的SFC文件，这里会获得一个AST
-       console.log(ret);
+    //    console.log(ret);
 
        if (!query.type) { // 如果请求中没有type，这个是SFC请求
             //  交由@vue/compiler-sfc进行编译
